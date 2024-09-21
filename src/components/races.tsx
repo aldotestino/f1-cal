@@ -4,6 +4,7 @@ import { Race } from '@/lib/types';
 import Navbar from '@/components/navbar';
 import { useMemo, useState } from 'react';
 import { searchFunction } from '@/lib/utils';
+import RaceCard from './race-card';
 
 function Races({ races }: {races: Array<Race>}) {
 
@@ -11,15 +12,15 @@ function Races({ races }: {races: Array<Race>}) {
 
   const filteredRaces = useMemo(() =>  races.filter(r => searchFunction(r, searchTerm)), [races, searchTerm]);
 
-  console.log(filteredRaces);
-
   return (
-    <main className='min-h-screen'>
+    <div className='min-h-screen'>
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <pre>
-        {JSON.stringify(filteredRaces, null, 2)}
-      </pre>
-    </main>
+      <main className='p-4 pt-10 w-full max-w-screen-lg mx-auto space-y-6'>
+        {filteredRaces.map(r => (
+          <RaceCard key={r.name} {...r} />
+        ))}
+      </main>
+    </div>
   );
 }
 
