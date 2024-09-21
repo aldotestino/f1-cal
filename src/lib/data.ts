@@ -1,3 +1,14 @@
+import { SessionType } from './types';
+
+export const sessionDurations = {
+  'Free Practice 1': 60,
+  'Free Practice 2': 60,
+  'Free Practice 3': 60,
+  'Qualifying': 60,
+  'Sprint Qualifying': 60,
+  'Race': 120
+} as Record<SessionType, number>;
+
 export const countryCodes = {
   'Afghanistan': 'AF',
   'Albania': 'AL',

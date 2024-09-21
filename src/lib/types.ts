@@ -57,9 +57,15 @@ export interface Circuit {
   name: string
   country: string
   locality: string
+  flag: string
 }
 
+export type SessionType = 'Free Practice 1' | 'Free Practice 2' | 'Free Practice 3' | 'Qualifying' | 'Sprint Qualifying' | 'Sprint' | 'Race'
+export type SessionStatus = 'upcoming' | 'ongoing' | 'completed'
+
 export interface Session {
-  name: 'Free Practice 1' | 'Free Practice 2' | 'Free Practice 3' | 'Qualifying' | 'Sprint Qualifying' | 'Sprint' | 'Race'
-  datetime: Date
+  type: SessionType
+  start: Date
+  end: Date
+  status: SessionStatus
 }

@@ -1,6 +1,5 @@
 import { Race } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardFooter, CardTitle } from '@/components/ui/card';
-import { getFlagEmoji } from '@/lib/utils';
 import { Button } from './ui/button';
 import { CalendarPlus } from 'lucide-react';
 
@@ -8,7 +7,7 @@ function RaceCard({ name, circuit }: Race) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{getFlagEmoji(circuit.country)} {name}</CardTitle>
+        <CardTitle>{circuit.flag} {name}</CardTitle>
         <CardDescription>{circuit.name}, {circuit.country}, {circuit.locality}</CardDescription>
       </CardHeader>
       <CardContent>
