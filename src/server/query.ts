@@ -1,4 +1,4 @@
-import { ApiResponse, Session } from '@/lib/types';
+import { ApiResponse, Race, Session } from '@/lib/types';
 
 const API_URL = 'https://ergast.com/api/f1/current.json';
 
@@ -62,7 +62,7 @@ export async function getRaces() {
         locality: r.Circuit.Location.locality
       },
       sessions
-    };
+    } as Race;
   });
 
   return races.filter(r => r.sessions.some(s => s!.datetime > now));

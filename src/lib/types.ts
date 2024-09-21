@@ -46,8 +46,8 @@ export interface ApiSession {
 // Types
 
 export interface Race {
-  season: number
-  round: number
+  season: string
+  round: string
   name: string
   circuit: Circuit
   sessions: Session[]

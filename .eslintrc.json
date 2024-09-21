@@ -10,6 +10,7 @@
     "src/components/ui"
   ],
   "rules": {
+    "@typescript-eslint/no-require-imports": "off",
     "comma-spacing": [
       "error",
       {
