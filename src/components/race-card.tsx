@@ -8,11 +8,11 @@ function RaceCard({ name, circuit, sessions }: Race) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{circuit.flag} {name}</CardTitle>
+        <CardTitle>{circuit.flag}{' '}{name}</CardTitle>
         <CardDescription>{circuit.name}, {circuit.country}, {circuit.locality}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ol>
+        <ol className='grid gap-4 sm:gap-8 grid-cols-1 sm:grid-cols-2'>
           {sessions.map(s => (
             <SessionItem key={s.type} {...s} />
           ))}
@@ -21,7 +21,7 @@ function RaceCard({ name, circuit, sessions }: Race) {
       <CardFooter className='justify-end'>
         <Button className='space-x-2 w-full sm:w-auto'>
           <CalendarPlus className='w-4 h-4'/>
-          <span>Add to calendar</span>
+          <span>Add all events to calendar</span>
         </Button>
       </CardFooter>
     </Card>
