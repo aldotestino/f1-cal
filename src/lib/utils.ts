@@ -17,7 +17,6 @@ export function searchFunction(race: Race, searchTerm: string) {
 
 export function getFlagEmoji(country: string) {
   const countryCode = countryCodes[country];
-  console.log(countryCode, country);
   const codePoints = countryCode
     .toUpperCase()
     .split('')

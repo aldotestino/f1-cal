@@ -2,8 +2,9 @@ import { Race } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardFooter, CardTitle } from '@/components/ui/card';
 import { Button } from './ui/button';
 import { CalendarPlus } from 'lucide-react';
+import SessionItem from './session-item';
 
-function RaceCard({ name, circuit }: Race) {
+function RaceCard({ name, circuit, sessions }: Race) {
   return (
     <Card>
       <CardHeader>
@@ -11,7 +12,11 @@ function RaceCard({ name, circuit }: Race) {
         <CardDescription>{circuit.name}, {circuit.country}, {circuit.locality}</CardDescription>
       </CardHeader>
       <CardContent>
-
+        <ol>
+          {sessions.map(s => (
+            <SessionItem key={s.type} {...s} />
+          ))}
+        </ol>
       </CardContent>
       <CardFooter className='justify-end'>
         <Button className='space-x-2 w-full sm:w-auto'>
