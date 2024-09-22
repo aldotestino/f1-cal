@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { ApiResponse, Race, Session, SessionType } from './types';
 import { countryCodes, sessionDurations } from './data';
 import { addMinutes } from 'date-fns';
+import { DateTime } from 'ics';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -109,4 +110,8 @@ function createSession({
     end,
     status: now < start ? 'upcoming' : now < end ? 'ongoing' : 'completed'
   };
+}
+
+export function createDateTime(date: Date): DateTime {
+  return [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes()];
 }

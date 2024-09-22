@@ -6,6 +6,7 @@ export const sessionDurations = {
   'Free Practice 3': 60,
   'Qualifying': 60,
   'Sprint Qualifying': 60,
+  'Sprint': 45,
   'Race': 120
 } as Record<SessionType, number>;
 
