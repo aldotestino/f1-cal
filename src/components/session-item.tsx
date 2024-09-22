@@ -28,19 +28,20 @@ function SessionItem({ session, raceName }: {session: Session, raceName: string}
   }
 
   return (
-    <li className='flex items-center justify-between gap-4'>
-      <div className='flex-1 flex items-center gap-4'>
-        <div className={cn('w-10 h-10 rounded-full bg-transparent shrink-0 grid place-items-center border-2 border-dashed', session.status === 'upcoming' ? 'border-blue-500' : session.status === 'ongoing' ? 'border-yellow-500' : 'border-green-500')}>
-          {session.status === 'upcoming' ? <Calendar className='w-6 h-6 text-blue-500' /> : session.status === 'ongoing' ? <Timer className='w-6 h-6 text-yellow-500' /> : <Check className='w-6 h-6 text-green-500' />}
-        </div>
-        <div className='flex flex-col'>
-          <span className='font-semibold text-lg'>{session.type}</span>
-          <span className='text-muted-foreground text-sm capitalize'>{format(session.start, 'PPPPp', { locale: it })}</span>
-        </div>
-      </div>  
-      {session.status === 'upcoming' && <Button size="icon" variant="outline" onClick={handleAddToCalendar}>
-        <CalendarPlus className='w-4 h-4' />
-      </Button>}
+    <li className='grid grid-cols-[auto,1fr,auto] gap-4 items-center'>
+      <div className={cn('w-10 h-10 rounded-full bg-transparent shrink-0 grid place-items-center border-2 border-dashed', session.status === 'upcoming' ? 'border-blue-500 dark:border-blue-300' : session.status === 'ongoing' ? 'border-yellow-500 dark:border-yellow-300' : 'border-green-500 dark:border-green-300')}>
+        {session.status === 'upcoming' ? <Calendar className='w-6 h-6 text-blue-500 dark:text-blue-300' /> : session.status === 'ongoing' ? <Timer className='w-6 h-6 text-yellow-500 dark:text-yellow-300' /> : <Check className='w-6 h-6 text-green-500 dark:text-green-300' />}
+      </div>
+      <div className='flex flex-col overflow-hidden'>
+        <span className='font-semibold text-lg truncate'>{session.type}</span>
+        <span className='text-muted-foreground text-sm capitalize truncate'>{format(session.start, 'PPPP', { locale: it })}</span>
+        <span className='text-muted-foreground text-sm capitalize truncate'>dalle {format(session.start, 'p', { locale: it })}</span>
+      </div>
+      {session.status === 'upcoming' && 
+        <Button className='shrink-0' size="icon" variant="outline" onClick={handleAddToCalendar}>
+          <CalendarPlus className='w-4 h-4' />
+        </Button>
+      }
     </li>
   );
 }
