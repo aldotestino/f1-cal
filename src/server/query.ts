@@ -26,5 +26,5 @@ export async function getRaces() {
     } as Race;
   });
 
-  return races.filter(r => r.sessions.some(s => s.start > now));
+  return races.filter(r => r.sessions.some(s => s.end > now));
 }

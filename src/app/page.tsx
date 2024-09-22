@@ -1,13 +1,11 @@
 import Races from '@/components/races';
 import { getRaces } from '@/server/query';
 
+export const revalidate = 300; // 5 minutes
+
 async function Home() {
 
   const races = await getRaces();
-
-  if(!races) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Races races={races} />
