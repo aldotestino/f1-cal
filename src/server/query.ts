@@ -1,7 +1,7 @@
 import { ApiResponse, Race } from '@/lib/types';
 import { createSessions, getFlagEmoji } from '@/lib/utils';
 
-const API_URL = 'https://ergast.com/api/f1/current.json';
+const API_URL = 'https://api.jolpi.ca/ergast/f1/current.json';
 
 export async function getRaces() {
   const now = new Date();

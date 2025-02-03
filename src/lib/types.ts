@@ -29,9 +29,10 @@ export interface ApiResponse {
         date: string
         time: string
         FirstPractice: ApiSession
-        SecondPractice: ApiSession
+        SecondPractice?: ApiSession
         ThirdPractice?: ApiSession
         Qualifying: ApiSession
+        SprintQualifying?: ApiSession
         Sprint?: ApiSession
       }>
     }
@@ -40,7 +41,7 @@ export interface ApiResponse {
 
 export interface ApiSession {
   date: string
-  time: string
+  time?: string
 }
 
 // Types

@@ -41,11 +41,11 @@ export function createSessions({
     now
   }));
 
-  if (r.Sprint) {
+  if (r.Sprint && r.SprintQualifying) {
     sessions.push(createSession({
       type: 'Sprint Qualifying',
-      date: r.SecondPractice.date,
-      time: r.SecondPractice.time,
+      date: r.SprintQualifying.date,
+      time: r.SprintQualifying.time,
       now
     }));
 
@@ -58,19 +58,17 @@ export function createSessions({
   } else {
     sessions.push(createSession({
       type: 'Free Practice 2',
-      date: r.SecondPractice.date,
-      time: r.SecondPractice.time,
+      date: r.SecondPractice!.date,
+      time: r.SecondPractice!.time,
       now
     }));
 
-    if (r.ThirdPractice) {
-      sessions.push(createSession({
-        type: 'Free Practice 3',
-        date: r.ThirdPractice.date,
-        time: r.ThirdPractice.time,
-        now
-      }));
-    }
+    sessions.push(createSession({
+      type: 'Free Practice 3',
+      date: r.ThirdPractice!.date,
+      time: r.ThirdPractice!.time,
+      now
+    }));
   }
 
   sessions.push(createSession({
@@ -93,12 +91,12 @@ export function createSessions({
 function createSession({
   type,
   date,
-  time,
+  time = '00:00:00',
   now
 }: {
   type: SessionType
   date: string
-  time: string
+  time?: string
   now: Date
 }): Session {
   const start = new Date(`${date}T${time}`);
